@@ -1,0 +1,7 @@
+{
+  "name": "DuocAttendance",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

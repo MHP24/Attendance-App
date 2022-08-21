@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sistema de asistencia Duoc</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="main">
+        <div class="welcome__header">
+          <h2 class="welcome__title">¡Bienvenido(a)!</h2>
+          <h2 class="welcome__subtitle">{{ username }}</h2>
+        </div>
+
+        <div class="welcome__body">
+            <img src="../../../assets/img/welcome.svg" alt="Welcome" class="welcome__img">
+            <app-button [buttonLabel]="'Escanear QR'" (click)="onClick()"></app-button>
+        </div>
+    </div>
+</ion-content>

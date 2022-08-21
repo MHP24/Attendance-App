@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <div class="profile">
+      <img src="../../../assets/media/{{picture}}.jpg" alt="You" class="profile__img">
+
+      <div class="profile__data">
+        <h2 class="profile__name">{{ name }}</h2>
+        <h3 class="profile__email">{{ email }}</h3>
+      </div>
+
+      <app-button [buttonLabel]="'Cerrar Sesi&oacute;n'" (click)="logout()"></app-button>
+    </div>
+  </div>
+</ion-content>

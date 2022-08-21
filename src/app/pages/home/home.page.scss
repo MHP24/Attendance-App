@@ -1,0 +1,27 @@
+.main {
+    background-image: url('../../../assets/img/wave.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: initial;
+    padding: 0 2em;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.welcome__header {
+    margin: 5em 0;
+}
+
+.welcome__title {
+    letter-spacing: .1rem;
+    line-height: 2rem;
+    font-weight: 600;
+    // font-style: italic;
+    text-transform: capitalize;
+    background: #FF8008; 
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008); 
+    background: linear-gradient(to right, #FFC837, #FF8008); 
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+}

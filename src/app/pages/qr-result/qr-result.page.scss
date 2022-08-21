@@ -1,0 +1,31 @@
+.main {
+    // border: 2px red solid;
+    background-image: url('../../../assets/img/wave_profile.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 1em;
+}
+
+.data {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+    font-size: 1rem;
+}
+
+.data__group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+.data__title, .data__content {
+    font-weight: 700;
+}
+
+.data__title {
+    color: var(--black-primary);
+}

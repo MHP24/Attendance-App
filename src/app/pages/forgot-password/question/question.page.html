@@ -1,0 +1,36 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+      <div class="container">
+          <div class="recovery-container">
+              <h2 class="recovery__title">Recuperar contraseña</h2>
+              <div class="steps">
+                  <div class="step">
+                    <div class="step__draw">
+                      <img src="../../../../assets/icon/mail.svg" alt="Mail" class="step__icon">
+                    </div>
+                    <p class="step__name">Verificar Email</p>
+                  </div>
+
+                  <div class="step">
+                    <div class="step__draw">
+                      <img src="../../../../assets/icon/question.svg" alt="Question" class="step__icon">
+                    </div>
+                    <p class="step__name">Pregunta</p>
+                  </div>
+              </div>
+              <h3 class="user">{{ username }}</h3>
+              <h3 class="question">{{ question }}</h3>
+
+              <form [formGroup]="questionForm" class="form" (ngSubmit)="onSubmit()">
+                  <input type="text" id="answer" name="answer" class="input__form" placeholder="Ingresa tu respuesta" formControlName="answer">
+                  <small class="form__invalid" *ngIf="questionForm.get('answer')?.touched && questionForm.get('answer')?.errors?.['required'] ">Este campo es obligatorio.</small>
+                  <app-button [buttonLabel]="'Recuperar contraseña'"></app-button>
+              </form>
+              <a [routerLink]="'/login'" class="form__link">¿Ya tienes una cuenta? <span class="form__link--span">Inicia Sesi&oacute;n</span></a>
+          </div>
+      </div>
+  </div>
+</ion-content>

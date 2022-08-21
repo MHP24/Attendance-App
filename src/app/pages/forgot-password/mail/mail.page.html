@@ -1,0 +1,34 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+      <div class="container">
+          <div class="recovery-container">
+              <h2 class="recovery__title">Recuperar contraseña</h2>
+              <div class="steps">
+                  <div class="step">
+                    <div class="step__draw">
+                      <img src="../../../../assets/icon/mail.svg" alt="Mail" class="step__icon">
+                    </div>
+                    <p class="step__name">Verificar Email</p>
+                  </div>
+
+                  <div class="step">
+                    <div class="step__draw step__draw--locked">
+                      <img src="../../../../assets/icon/question.svg" alt="Question" class="step__icon">
+                    </div>
+                    <p class="step__name">Pregunta</p>
+                  </div>
+              </div>
+              <form [formGroup]="emailForm" class="form" (ngSubmit)="onSubmit()">
+                  <input type="email" id="email" name="email" class="input__form" placeholder="Ingresa tu email" formControlName="email">
+                  <small class="form__invalid" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
+                  <small class="form__invalid" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
+                  <app-button [buttonLabel]="'Recuperar contraseña'"></app-button>
+              </form>
+              <a [routerLink]="'/login'" class="form__link">¿Ya tienes una cuenta? <span class="form__link--span">Inicia Sesi&oacute;n</span></a>
+          </div>
+      </div>
+  </div>
+</ion-content>

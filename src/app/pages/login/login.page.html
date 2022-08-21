@@ -1,0 +1,45 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+      <div class="banner-container">
+        <div class="banner-img"></div>
+        <div class="banner-content">
+          <div class="banner-back-container">
+            <div class="banner-back"></div>
+          </div>
+          <h2 class="banner__title">Portal Asistencia<br/>Duoc</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="loginForm" class="form" (ngSubmit)="onSubmit()">
+        <div class="form__group">
+            <input type="email" id="email" name="email" class="input__form" placeholder="Ingresa tu email" formControlName="email">
+            <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
+            <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
+        </div>
+
+        <div class="form__group">
+            <input type="password" id="password" name="password" class="input__form" placeholder="Ingresa tu contraseña" formControlName="password">
+            <small class="form__invalid" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required'] ">Este campo es obligatorio.</small>
+        </div>
+        <a [routerLink]="'/recover'" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        <app-button [buttonLabel]="'Iniciar Sesión'"></app-button>
+    </form>
+
+    <div class="social-container">
+        <div class="social-media">
+          <div class="social-icon social-icon--facebook"></div>
+        </div>
+
+        <div class="social-media">
+          <div class="social-icon social-icon--instagram"></div>
+        </div>
+
+        <div class="social-media">
+          <div class="social-icon social-icon--twitter"></div>
+        </div>
+    </div>
+  </div>
+</ion-content>
