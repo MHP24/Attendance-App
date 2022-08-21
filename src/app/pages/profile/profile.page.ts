@@ -13,6 +13,7 @@ export class ProfilePage implements OnInit {
   constructor(private readonly router: Router) { }
 
   ngOnInit() {
+    /* Local storage method */
     this.name = JSON.parse(localStorage.getItem('user')).name;
     this.email = JSON.parse(localStorage.getItem('user')).email;
     this.picture = JSON.parse(localStorage.getItem('user')).picture;

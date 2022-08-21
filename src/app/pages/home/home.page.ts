@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,16 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   username: string;
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute) { }
   ngOnInit() {
-    this.username = JSON.parse(localStorage.getItem('user')).name;
+    this.activatedRoute.queryParams.subscribe( params => {
+      const { name } = JSON.parse(this.router.getCurrentNavigation().extras.state.user);
+      this.username = name;
+    });
+
+    /* Local storage method */
+    // this.username = JSON.parse(localStorage.getItem('user')).name;
   }
 
   onClick(): void {

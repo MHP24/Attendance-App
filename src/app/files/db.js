@@ -22,13 +22,5 @@ export const data = [
         question: 'Lugar de nacimiento de tu madre',
         answer: 'Valparaiso',
         picture: 'cifuentes'
-    },
-    {
-        email: 'mi.henriquezp@duocuc.cl',
-        password: 'asdf',
-        name: 'Miguel Henríquez Pacheco',
-        question: 'Número secreto',
-        answer: '123',
-        picture: 'mihenriquezp'
     }
 ]

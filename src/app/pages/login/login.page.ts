@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { getUser } from 'src/app/helpers/userHandler';
 import { UserI } from 'src/app/interfaces/user.interface';
@@ -28,9 +28,15 @@ export class LoginPage implements OnInit {
     const { email, password } = this.loginForm.value;
     this.user = getUser(email, password);
     if(this.user) {
+      /* State method */
+      const navigationExtras: NavigationExtras = {
+        state: { user: JSON.stringify(this.user) }
+      };
+      this.router.navigate(['/navigation/home'], navigationExtras);
+
+      /* Local storage method */
       localStorage.clear();
       localStorage.setItem('user', JSON.stringify(this.user));
-      this.router.navigate(['/navigation/home']);
       return;
     }
     alertUser('Error al iniciar sesión', 'Usuario o claves incorrectas', this.alertController);
@@ -42,4 +48,6 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required]]
     });
   }
+
+  
 }

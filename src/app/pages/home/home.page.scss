@@ -23,5 +23,33 @@
     background: linear-gradient(to right, #FFC837, #FF8008); 
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-
+    animation: fadeInTB 1s linear;
 }
+
+.welcome__subtitle {
+    animation: fadeIn 2s linear;
+}
+
+@keyframes fadeInTB {
+    0% {
+        opacity: 0;
+        transform: translateY(200%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
