@@ -1,11 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  animations: [
+    trigger('enterView', [
+      state('void', style({
+        transform: 'translateX(100%)',
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate(400, style({
+          transform: 'translateX(0)',
+          opacity: 1
+        }))
+      ])
+    ])
+  ]
 })
+
 export class HomePage implements OnInit {
   username: string;
   constructor(private readonly router: Router,

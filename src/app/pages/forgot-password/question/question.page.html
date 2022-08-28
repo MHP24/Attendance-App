@@ -25,7 +25,9 @@
               <h3 class="question">{{ question }}</h3>
 
               <form [formGroup]="questionForm" class="form" (ngSubmit)="onSubmit()">
-                  <input type="text" id="answer" name="answer" class="input__form" placeholder="Ingresa tu respuesta" formControlName="answer">
+                  <input type="text" id="answer" name="answer" class="input__form" 
+                  placeholder="Ingresa tu respuesta" formControlName="answer"
+                  autocomplete="off">
                   <small class="form__invalid" *ngIf="questionForm.get('answer')?.touched && questionForm.get('answer')?.errors?.['required'] ">Este campo es obligatorio.</small>
                   <app-button [buttonLabel]="'Recuperar contraseña'"></app-button>
               </form>

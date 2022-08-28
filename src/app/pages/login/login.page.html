@@ -15,7 +15,9 @@
 
     <form [formGroup]="loginForm" class="form" (ngSubmit)="onSubmit()">
         <div class="form__group">
-            <input type="email" id="email" name="email" class="input__form" placeholder="Ingresa tu email" formControlName="email">
+            <input type="email" id="email" name="email" 
+            class="input__form" placeholder="Ingresa tu email" 
+            formControlName="email" autocomplete="off">
             <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
             <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
         </div>

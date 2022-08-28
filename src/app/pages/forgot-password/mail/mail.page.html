@@ -22,7 +22,9 @@
                   </div>
               </div>
               <form [formGroup]="emailForm" class="form" (ngSubmit)="onSubmit()">
-                  <input type="email" id="email" name="email" class="input__form" placeholder="Ingresa tu email" formControlName="email">
+                  <input type="email" id="email" name="email" class="input__form" 
+                  placeholder="Ingresa tu email" formControlName="email"
+                  autocomplete="off">
                   <small class="form__invalid" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
                   <small class="form__invalid" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
                   <app-button [buttonLabel]="'Recuperar contraseña'"></app-button>

@@ -12,7 +12,6 @@ import { alertUser } from 'src/app/helpers/alertHandler';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   loginForm!: FormGroup;
   user: UserI;
   constructor(private readonly formBuilder: 
@@ -48,6 +47,4 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required]]
     });
   }
-
-  
 }

@@ -45,3 +45,7 @@ ion-toolbar {
     font-weight: 600;
     text-align: left;
 }
+
+.input__form:focus {
+    outline: 2px solid var(--orange-primary);
+}
