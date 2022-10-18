@@ -5,6 +5,8 @@ import { AlertController } from '@ionic/angular';
 import { findEmail } from 'src/app/helpers/userHandler';
 import { UserI } from 'src/app/interfaces/user.interface';
 import { alertUser } from 'src/app/helpers/alertHandler';
+import { DatabaseHandlerService } from 'src/app/services/database-handler.service';
+import { StorageHandlerService } from 'src/app/services/storage-handler.service';
 
 @Component({
   selector: 'app-mail',
@@ -16,10 +18,13 @@ export class MailPage implements OnInit {
   user: UserI;
   constructor(private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly alertController: AlertController) { }
+    private readonly alertController: AlertController,
+    private readonly databaseService: DatabaseHandlerService,
+    private readonly storageService: StorageHandlerService) { }
 
   ngOnInit() {
     this.emailForm = this.formInit();
+    this.storageService.clear();
   }
 
   formInit(): FormGroup {
@@ -30,13 +35,14 @@ export class MailPage implements OnInit {
 
   onSubmit() {
     if(this.emailForm.invalid) return;
-    this.user = findEmail(this.emailForm.value.email);
-    if(this.user) {
-      localStorage.setItem('quiz', JSON.stringify(this.user));
-      this.router.navigate(['/question']);
-      return;
-    }
-    alertUser('Error al encontrar usuario', 'El usuario no existe', this.alertController);
+    this.databaseService.selectUser(this.emailForm.value.email).then((res) => {
+      if(res.length > 0) {
+        this.storageService.set('REQUEST_DATA', JSON.stringify(res))
+        this.router.navigate(['/question']);
+        return;
+      }
+      alertUser('Error al encontrar usuario', 'El usuario no existe', this.alertController);
+    });
   }
 
 }

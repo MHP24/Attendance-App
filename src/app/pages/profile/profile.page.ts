@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { StorageHandlerService } from 'src/app/services/storage-handler.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +11,25 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit {
   name: string;
   email: string;
-  picture: string;
-  constructor(private readonly router: Router) { }
+  constructor(
+    private readonly router: Router,
+    private readonly storageService: StorageHandlerService,
+    private readonly authService: AuthService
+  ) { }
 
   ngOnInit() {
-    /* Local storage method */
-    this.name = JSON.parse(localStorage.getItem('user')).name;
-    this.email = JSON.parse(localStorage.getItem('user')).email;
-    this.picture = JSON.parse(localStorage.getItem('user')).picture;
+    this.storageService.get('SESSION_DATA').then((res) => {
+      const { username, mail } = JSON.parse(res)[0]
+      this.name = username;
+      this.email = mail;
+    });
+    // this.picture = JSON.parse(localStorage.getItem('user')).picture;
   }
 
   logout(): void {
     this.router.navigate(['/login'])
-    localStorage.clear();
+    this.storageService.clear();
+    this.authService.logout();
   }
 
 }

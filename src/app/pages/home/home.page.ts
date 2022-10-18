@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AnimationController} from '@ionic/angular';
+import { StorageHandlerService } from 'src/app/services/storage-handler.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,17 @@ export class HomePage implements OnInit {
   @ViewChild('pageTitle', { read: ElementRef, static: true}) pageTitle: ElementRef;
 
   username: string;
-  constructor(private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly animationController: AnimationController) { }
-  ngOnInit() {
-    this.activatedRoute.queryParams.subscribe( () => {
-      const { name } = JSON.parse(this.router.getCurrentNavigation().extras.state.user);
-      this.username = name;
-    });
+  constructor(
+    private readonly router: Router,
+    private readonly animationController: AnimationController,
+    private readonly storageService: StorageHandlerService
+  ) { }
 
-    /* Local storage method */
-    // this.username = JSON.parse(localStorage.getItem('user')).name;
+  ngOnInit() {
+    this.storageService.get('SESSION_DATA').then((res) => {
+      const { username } = JSON.parse(res)[0]
+      this.username = username;
+    });
   }
 
   ngAfterViewInit() {

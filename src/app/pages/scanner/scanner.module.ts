@@ -8,6 +8,8 @@ import { ScannerPageRoutingModule } from './scanner-routing.module';
 
 import { ScannerPage } from './scanner.page';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { QrComponent } from 'src/app/components/qr/qr.component';
+
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     IonicModule,
     ScannerPageRoutingModule
   ],
-  declarations: [ScannerPage, ButtonComponent]
+  declarations: [ScannerPage, ButtonComponent, QrComponent]
 })
 export class ScannerPageModule {}

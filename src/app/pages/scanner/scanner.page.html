@@ -4,19 +4,4 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="main">
-    <h3 class="instructions">Fija tu c&aacute;mara en direcci&oacute;n al c&oacute;digo QR</h3>
-    <ion-button expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
-      <ion-icon slot="start" name="refresh"></ion-icon>
-      Reset
-    </ion-button>
-  
-    <div class="qr-area">
-      <div class="scanner-line scanner-line--hidden"></div>
-      <video class="video" #video [hidden]="!scanActive"></video>
-    </div>
-    <canvas #canvas hidden></canvas>
-    <app-button [buttonLabel]="'Comienza a escanear'" expand="full" (click)="startScan()"></app-button>
-  </div>
-</ion-content>
+<app-qr></app-qr>

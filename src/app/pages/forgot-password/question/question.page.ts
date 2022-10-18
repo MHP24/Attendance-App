@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { alertUser } from 'src/app/helpers/alertHandler';
+import { StorageHandlerService } from 'src/app/services/storage-handler.service';
 
 @Component({
   selector: 'app-question',
@@ -15,21 +16,27 @@ export class QuestionPage implements OnInit {
   question: string;
   answer: string;
   password: string;
+  credentials = {}
 
-  constructor(private readonly formBuilder: FormBuilder,
-    private readonly alertController: AlertController) { }
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly alertController: AlertController,
+    private readonly storageService: StorageHandlerService) { }
 
   ngOnInit() {
-    this.question = JSON.parse(localStorage.getItem('quiz')).question;
-    this.username = JSON.parse(localStorage.getItem('quiz')).name;
-    this.answer = JSON.parse(localStorage.getItem('quiz')).answer.toLowerCase();
-    this.password = JSON.parse(localStorage.getItem('quiz')).password;
+    this.storageService.get('REQUEST_DATA').then(res => {
+      const {username, question, answer, password } = JSON.parse(res)[0];
+      this.username = username;
+      this.question = question;
+      this.answer = answer;
+      this.password = password;
+    });
     this.questionForm = this.formInit();
   }
 
   onSubmit(): void {
     if(this.questionForm.invalid) return;
-    if((this.questionForm.value.answer).trim().toLowerCase() === this.answer.trim()) {
+    if((this.questionForm.value.answer).trim() === this.answer.trim()) {
       alertUser('¡Recuperación éxitosa!', `Tu contraseña es: ${this.password}`, this.alertController);
       return;
     };
