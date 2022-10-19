@@ -1,0 +1,22 @@
+<div class="card" *ngFor="let p of posts;">
+  <div class="card__header">
+    <p class="card__publisher">(Publicación #{{ p.id }}) {{ p.username }}</p>
+    <p class="card__title">"{{ p.title }}"</p>
+  </div>
+
+  <div class="card__body">
+    <div class="body__content">
+      <p class="card__paragraph">{{ p.body }}...</p>
+    </div>
+
+    <div class="body__actions">
+      <button class="btn" (click)="editPost(p)">
+        <ion-icon class="btn__icon" name="pencil-outline"></ion-icon>
+      </button>
+
+      <button class="btn" (click)="deletePost(p)">
+        <ion-icon class="btn__icon" name="trash-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</div>

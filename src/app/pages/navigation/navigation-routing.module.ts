@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RouteGuardService } from 'src/app/services/route-guard.service';
-
 import { NavigationPage } from './navigation.page';
 
 const routes: Routes = [
@@ -27,6 +26,11 @@ const routes: Routes = [
       {
         path: 'qr-result',
         loadChildren: () => import('../../pages/qr-result/qr-result.module').then( m => m.QrResultPageModule),
+        canActivate: [RouteGuardService]
+      },
+      {
+        path: 'forum',
+        loadChildren: () => import('../../pages/forum/forum.module').then( m => m.ForumPageModule),
         canActivate: [RouteGuardService]
       }
     ]

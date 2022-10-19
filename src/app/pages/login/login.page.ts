@@ -14,8 +14,9 @@ import { StorageHandlerService } from 'src/app/services/storage-handler.service'
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
   user: UserI;
-  constructor(private readonly formBuilder: 
-    FormBuilder, private readonly router: Router,
+  constructor(
+    private readonly formBuilder:FormBuilder, 
+    private readonly router: Router,
     private readonly alertController: AlertController,
     private databaseService: DatabaseHandlerService,
     private store: StorageHandlerService,

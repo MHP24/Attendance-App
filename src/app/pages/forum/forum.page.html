@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novedades</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form__container">
+    <h4 class="form__title">Ingresa tu publicaci&oacute;n</h4>
+    <form [formGroup]="forumForm" action="" class="form" (ngSubmit)="onSubmit()">
+      <div class="form__group">
+        <input type="text" id="title" name="title" 
+        class="input__form" placeholder="T&iacute;tulo"
+        formControlName="title">
+        <small class="form__invalid" *ngIf="forumForm.get('title')?.touched && forumForm.get('title')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+  
+      <div class="form__group">
+        <textarea type="text" id="content" name="content" 
+        class="input__form" placeholder="Cuerpo"
+        formControlName="content"></textarea>
+        <small class="form__invalid" *ngIf="forumForm.get('content')?.touched && forumForm.get('content')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+  
+      <button class="btn">Guardar</button>
+    </form>
+  </div>
+  <div class="posts">
+    <app-forum-card [posts]="data"></app-forum-card>
+  </div>
+</ion-content>

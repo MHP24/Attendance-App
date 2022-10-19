@@ -1,4 +1,4 @@
-import { AlertController } from "@ionic/angular";
+import { AlertController, ToastController } from "@ionic/angular";
 
 export const alertUser = async (_header: string, msg: string, controller: AlertController) => {
     const alert = await controller.create({
@@ -8,4 +8,12 @@ export const alertUser = async (_header: string, msg: string, controller: AlertC
     });
     await alert.present();
     await alert.onDidDismiss();
+}
+
+export const alertToast = async (msg: string, controller: ToastController) => {
+  const toast = await controller.create({
+    message: msg,
+    duration: 3000
+  });
+  await toast.present();
 }

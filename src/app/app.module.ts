@@ -11,6 +11,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { AuthService } from './services/auth.service';
 import { StorageHandlerService } from './services/storage-handler.service';
 import { RouteGuardService } from './services/route-guard.service';
+import { ApiService } from './services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,13 +21,15 @@ import { RouteGuardService } from './services/route-guard.service';
     IonicStorageModule.forRoot(),
     AppRoutingModule, 
     ReactiveFormsModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
     DatabaseHandlerService,
     AuthService,
     StorageHandlerService,
     RouteGuardService,
+    ApiService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

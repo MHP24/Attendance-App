@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'qr-result',
     loadChildren: () => import('./pages/qr-result/qr-result.module').then( m => m.QrResultPageModule)
   },
+  {
+    path: 'forum',
+    loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },
 ];
 
 @NgModule({
