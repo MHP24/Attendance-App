@@ -9,7 +9,7 @@ import { StorageHandlerService } from 'src/app/services/storage-handler.service'
   styleUrls: ['./qr-result.page.scss'],
 })
 export class QrResultPage implements OnInit {
-  qrData: any;
+  qrData: QRI;
   constructor(
     private readonly router: Router,
     private readonly storageService: StorageHandlerService

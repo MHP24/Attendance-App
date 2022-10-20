@@ -8,6 +8,7 @@ import { QrResultPageRoutingModule } from './qr-result-routing.module';
 
 import { QrResultPage } from './qr-result.page';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { QrCardComponent } from 'src/app/components/qr-card/qr-card.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     IonicModule,
     QrResultPageRoutingModule
   ],
-  declarations: [QrResultPage, ButtonComponent]
+  declarations: [QrResultPage, ButtonComponent, QrCardComponent]
 })
 export class QrResultPageModule {}
