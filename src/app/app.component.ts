@@ -19,10 +19,10 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(async () => {
+    this.platform.ready().then(async() => {
       await this.databaseService.initDB();
-      this.storeService.init();
-      this.authService.initializeAuthentication();
+      await this.storeService.init();
+      await this.authService.initializeAuthentication();
     });
   }
 }

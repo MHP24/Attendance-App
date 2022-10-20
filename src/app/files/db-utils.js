@@ -16,3 +16,6 @@ export const insertUserQ = 'INSERT INTO users VALUES(?, ?, ?, ?, ?)';
 export const selectAllQ = `SELECT * FROM users;`;
 export const selectByMailQ = `SELECT * FROM users WHERE mail = ?;`;
 export const selectAuthQ = `SELECT * FROM users WHERE mail = ? AND password = ?;`;
+export const insertSessionQ = `INSERT INTO session VALUES(?, ?);`;
+export const selectSessionQ = `SELECT * FROM session;`;
+export const deleteSessionQ = `DELETE * FROM session;`;

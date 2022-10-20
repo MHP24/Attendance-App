@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CapacitorSQLite, SQLiteDBConnection, 
-        SQLiteConnection,
-        CapacitorSQLitePlugin } from '@capacitor-community/sqlite';
-import { tableSchema, insertUserQ, selectAllQ, selectByMailQ, selectAuthQ } from '../files/db-utils';
+import { CapacitorSQLite, SQLiteDBConnection, SQLiteConnection, CapacitorSQLitePlugin } from '@capacitor-community/sqlite';
+import { tableSchema, insertUserQ, selectAllQ, selectByMailQ, 
+  selectAuthQ, insertSessionQ, selectSessionQ, deleteSessionQ } from '../files/db-utils';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,21 +15,20 @@ export class DatabaseHandlerService {
 
   initDB(): Promise<boolean> {
       const dbOptions = {database: 'duocAttendance', readonly: false };
-
       return new Promise(async resolve => {
           try {
-              this.capacitorSQLitePlugin = CapacitorSQLite;
-              await this.capacitorSQLitePlugin.closeConnection(dbOptions).catch((reason) => console.log(reason))
-              this.sqlite = new SQLiteConnection(this.capacitorSQLitePlugin);
-              this.db = await this.createConnection();
-              this.db.open();
-              await this.db.execute(tableSchema);
-              this.createUser('atorres@duocuc.cl', '1234', 'Ana Torres Leiva', 'Nombre de tu mascota', 'Gato');
-              this.createUser('avalenzuela@duocuc.cl', 'qwer', 'Alberto Valenzuela Nuñez', 'Nombre de tu mejor amigo', 'Juanito');
-              this.createUser('cifuentes@duocuc.cl', 'asdf', 'Carla Fuentes González', 'Lugar de nacimiento de tu madre', 'Valparaiso');
-              resolve(true);
+            this.capacitorSQLitePlugin = CapacitorSQLite;
+            await this.capacitorSQLitePlugin.closeConnection(dbOptions).catch((reason) => console.log(reason))
+            this.sqlite = new SQLiteConnection(this.capacitorSQLitePlugin);
+            this.db = await this.createConnection();
+            this.db.open();
+            await this.db.execute(tableSchema);
+            this.createUser('atorres@duocuc.cl', '1234', 'Ana Torres Leiva', 'Nombre de tu mascota', 'Gato');
+            this.createUser('avalenzuela@duocuc.cl', 'qwer', 'Alberto Valenzuela Nuñez', 'Nombre de tu mejor amigo', 'Juanito');
+            this.createUser('cifuentes@duocuc.cl', 'asdf', 'Carla Fuentes González', 'Lugar de nacimiento de tu madre', 'Valparaiso');
+            resolve(true);
           } catch(err) {
-              resolve(false);
+            resolve(false);
           }
       });
   }
@@ -40,8 +38,7 @@ export class DatabaseHandlerService {
   }
 
   createUser(mail: string, password: string, username: string, question: string, answer: string) {
-    this.db.query(insertUserQ, 
-      [mail, password, username, question, answer]);
+    this.db.query(insertUserQ, [mail, password, username, question, answer]);
   }
 
   async selectUsers(): Promise<any> {
@@ -65,15 +62,15 @@ export class DatabaseHandlerService {
   }
 
   saveSession(mail: string, password: string) {
-    this.db.query('INSERT INTO session VALUES(?, ?);', [mail, password]);
+    this.db.query(insertSessionQ, [mail, password]);
   }
 
   async getSession() {
-    const { values } =  await this.db.query('SELECT * FROM session;', []);
+    const { values } =  await this.db.query(selectSessionQ, []);
     return values;
   }
 
   logout() {
-    this.db.query('DELETE * FROM session;', []);
+    this.db.query(deleteSessionQ, []);
   }
 }
