@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   initializeAuthentication(): Promise<boolean> {
-    return new Promise(async resolve => {
+    return new Promise(async () => {
       try {
         this.checkSession();
         return Promise.resolve(true);
@@ -30,12 +30,12 @@ export class AuthService {
   }
 
   checkSession() {
-    this.storage.get("SESSION_DATA").then((res) => {
+    this.databaseService.getSession().then(res => {
       if(res.length > 0) {
-        this.authState.next(true)
-        this.router.navigate(['/navigation/home']);
-      };
-    });
+        const {mail, password } = res[0];
+        this.login(mail, password);
+      }
+    })
   }
 
   isAuthenticated() {
@@ -46,7 +46,9 @@ export class AuthService {
     try {
       this.databaseService.loginUser(mail, password).then(res => {
         if(res.length > 0) {
+          this.storage.clear();
           this.storage.set("SESSION_DATA", JSON.stringify(res));
+          this.databaseService.saveSession(mail, password);
           this.authState.next(true);
           this.router.navigate(['/navigation/home']);
           return;
@@ -59,6 +61,7 @@ export class AuthService {
   }
 
   logout() {
+    this.databaseService.logout();
     this.authState.next(false)
   }
 }

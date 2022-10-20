@@ -23,7 +23,6 @@ export class ProfilePage implements OnInit {
       this.name = username;
       this.email = mail;
     });
-    // this.picture = JSON.parse(localStorage.getItem('user')).picture;
   }
 
   logout(): void {

@@ -11,8 +11,6 @@ export class DatabaseHandlerService {
   capacitorSQLitePlugin: CapacitorSQLitePlugin;
   sqlite: SQLiteConnection;
   db: SQLiteDBConnection;
-  // isRunning: boolean;
-  // isService: boolean = false;
 
   constructor() { }
 
@@ -30,12 +28,8 @@ export class DatabaseHandlerService {
               this.createUser('atorres@duocuc.cl', '1234', 'Ana Torres Leiva', 'Nombre de tu mascota', 'Gato');
               this.createUser('avalenzuela@duocuc.cl', 'qwer', 'Alberto Valenzuela Nuñez', 'Nombre de tu mejor amigo', 'Juanito');
               this.createUser('cifuentes@duocuc.cl', 'asdf', 'Carla Fuentes González', 'Lugar de nacimiento de tu madre', 'Valparaiso');
-
-              // this.isService = true;
-              // this.isRunning = true;
               resolve(true);
           } catch(err) {
-              // this.isRunning = false;
               resolve(false);
           }
       });
@@ -68,5 +62,18 @@ export class DatabaseHandlerService {
   async loginUser(mail: string, password: string) {
     const { values } = await this.db.query(selectAuthQ, [mail, password]);
     return values;
+  }
+
+  saveSession(mail: string, password: string) {
+    this.db.query('INSERT INTO session VALUES(?, ?);', [mail, password]);
+  }
+
+  async getSession() {
+    const { values } =  await this.db.query('SELECT * FROM session;', []);
+    return values;
+  }
+
+  logout() {
+    this.db.query('DELETE * FROM session;', []);
   }
 }

@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { alertToast } from '../../helpers/alertHandler';
+import { PostI } from 'src/app/interfaces/post.interface';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.page.html',
@@ -10,7 +11,7 @@ import { alertToast } from '../../helpers/alertHandler';
 })
 export class ForumPage implements OnInit {
   forumForm!: FormGroup;
-  data: any;
+  data: PostI[];
   currentId: number;
   constructor(
     private readonly formBuilder:FormBuilder,
@@ -34,11 +35,11 @@ export class ForumPage implements OnInit {
           const { name } = users.find(({ id }) => {
             return(id === userId);
           });
-          return {username: name, ...props}
-        })
+          return {username: name, ...props};
+        });
         this.data.reverse();
       });
-    })
+    });
   }
 
   initForm(_title: string='', _content: string=''): FormGroup {
@@ -55,12 +56,11 @@ export class ForumPage implements OnInit {
       this.api.createPost(value).subscribe((res) => {
         alertToast(`Publicación creada con éxito.`, this.toastController);
       });
-      this.forumForm = this.initForm();
-      return;
+    } else {
+      this.api.updatePost({id:this.currentId, ...value}).subscribe(({ id }) => {
+        alertToast(`Publicación #${id} actualizada con éxito.`, this.toastController);
+      });
     }
-    this.api.updatePost({id:this.currentId, ...value}).subscribe(({ id }) => {
-      alertToast(`Publicación #${id} actualizada con éxito.`, this.toastController);
-    })
     this.forumForm = this.initForm();
     this.currentId = undefined;
   }

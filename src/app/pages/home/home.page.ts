@@ -10,7 +10,7 @@ import { StorageHandlerService } from 'src/app/services/storage-handler.service'
 })
 
 export class HomePage implements OnInit {
-  @ViewChild('pageTitle', { read: ElementRef, static: true}) pageTitle: ElementRef;
+  @ViewChild('pageTitle', { read: ElementRef, static: true }) pageTitle: ElementRef;
 
   username: string;
   constructor(
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.storageService.get('SESSION_DATA').then((res) => {
-      const { username } = JSON.parse(res)[0]
+      const { username } = JSON.parse(res)[0];
       this.username = username;
     });
   }

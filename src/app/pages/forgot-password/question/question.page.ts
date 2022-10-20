@@ -16,7 +16,6 @@ export class QuestionPage implements OnInit {
   question: string;
   answer: string;
   password: string;
-  credentials = {}
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -24,7 +23,7 @@ export class QuestionPage implements OnInit {
     private readonly storageService: StorageHandlerService) { }
 
   ngOnInit() {
-    this.storageService.get('REQUEST_DATA').then(res => {
+    this.storageService.get('REQUEST_DATA').then((res: string) => {
       const {username, question, answer, password } = JSON.parse(res)[0];
       this.username = username;
       this.question = question;

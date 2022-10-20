@@ -6,6 +6,11 @@ CREATE TABLE IF NOT EXISTS users (
   question TEXT NOT NULL,
   answer TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS session (
+  mail TEXT PRIMARY KEY NOT NULL,
+  password TEXT NOT NULL
+);
 `;
 export const insertUserQ = 'INSERT INTO users VALUES(?, ?, ?, ?, ?)';
 export const selectAllQ = `SELECT * FROM users;`;

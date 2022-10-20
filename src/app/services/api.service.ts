@@ -2,12 +2,14 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
+import { WPostI, PostQueryI } from '../interfaces/post.interface';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
-  @Output() postTrigger: EventEmitter<any> = new EventEmitter();
+  @Output() postTrigger: EventEmitter<PostQueryI> = new EventEmitter();
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,7 +31,7 @@ export class ApiService {
     return this.http.get(this.API_POST_USERS).pipe(retry(3));
   }
 
-  createPost(_post: any): Observable<any> {
+  createPost(_post: WPostI): Observable<any> {
     return this.http.post(this.API_POST_URL, _post, this.httpOptions).pipe(retry(3));
   }
 

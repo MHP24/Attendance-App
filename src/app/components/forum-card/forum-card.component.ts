@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { alertToast } from 'src/app/helpers/alertHandler';
+import { PostQueryI } from 'src/app/interfaces/post.interface';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class ForumCardComponent implements OnInit {
     })
   }
 
-  editPost(post: any) {
+  editPost(post: PostQueryI) {
     this.api.postTrigger.emit(post);
   }
 }

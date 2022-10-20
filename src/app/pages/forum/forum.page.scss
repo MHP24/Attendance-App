@@ -1,15 +1,22 @@
 .form__container {
     width: 100%;
     min-height: 35vh;
-    background-color: #fff;
-    color: #000;
+    background-color: var(--white-primary);
+    color: var(--black-primary);
     font-size: 1rem;
     padding: .5em;
     overflow-y: auto;
+    box-shadow: 0px 3px 25px -20px rgba(0,0,0,0.75);
+    background-image: url('../../../assets/img/wave_qr.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .form__title {
     padding: 0 1em;
+    color: var(--white-primary);
+    font-family: 'DynaPuff', cursive;
 }
 
 .form {
