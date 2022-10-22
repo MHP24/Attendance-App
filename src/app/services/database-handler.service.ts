@@ -61,8 +61,8 @@ export class DatabaseHandlerService {
     return values;
   }
 
-  saveSession(mail: string, password: string) {
-    this.db.query(insertSessionQ, [mail, password]);
+  async saveSession(mail: string, password: string) {
+    return await this.db.query(insertSessionQ, [mail, password]);
   }
 
   async getSession() {
@@ -70,7 +70,7 @@ export class DatabaseHandlerService {
     return values;
   }
 
-  logout() {
-    this.db.query(deleteSessionQ, []);
+  async logout() {
+    return await this.db.query(deleteSessionQ, []);
   }
 }

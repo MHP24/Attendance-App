@@ -29,6 +29,7 @@ export class StorageHandlerService {
   }
 
   async clear() {
+    await this._storage.remove("SESSION_DATA");
     await this._storage.clear();
   }
 }

@@ -30,6 +30,29 @@
     animation: fadeIn 2s linear;
 }
 
+.btn {
+    text-decoration: none;
+    display: block;
+    cursor: default;
+    width: 100%;
+    background: #FF8008;  
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008); 
+    background: linear-gradient(to right, #FFC837, #FF8008); 
+    padding: 1em 1.2em;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    letter-spacing: .05rem;
+    transition: .3s;
+    font-weight: 600;
+    margin: 1em auto;
+    color: var(--white-primary);
+}
+
+.btn:hover {
+    opacity: .9;
+    transition: .3s;
+}
+
 @keyframes fadeInTB {
     0% {
         opacity: 0;

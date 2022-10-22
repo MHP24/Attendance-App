@@ -35,8 +35,4 @@ export class HomePage implements OnInit {
     .fromTo('transform', 'translateX(100%)', 'translate(0%)')
     animation.play();
   }
-
-  onClick(): void {
-    this.router.navigate(['navigation/scanner'])
-  }
 }

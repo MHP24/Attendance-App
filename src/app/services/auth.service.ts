@@ -44,9 +44,9 @@ export class AuthService {
 
   async login(mail: string, password: string) { 
     try {
-      this.databaseService.loginUser(mail, password).then(res => {
+      this.databaseService.loginUser(mail, password).then( async (res) => {
         if(res.length > 0) {
-          this.storage.clear();
+          await this.storage.clear();
           this.storage.set("SESSION_DATA", JSON.stringify(res));
           this.databaseService.saveSession(mail, password);
           this.authState.next(true);
@@ -60,8 +60,9 @@ export class AuthService {
     }
   }
 
-  logout() {
-    this.databaseService.logout();
-    this.authState.next(false)
+  async logout() {
+    await this.databaseService.logout();
+    await this.storage.clear();
+    this.authState = new BehaviorSubject(false);
   }
 }

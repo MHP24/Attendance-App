@@ -13,7 +13,7 @@
 
         <div class="welcome__body">
             <img src="../../../assets/img/welcome.svg" alt="Welcome" class="welcome__img">
-            <app-button [buttonLabel]="'Escanear QR'" (click)="onClick()"></app-button>
+            <a class="btn" [routerLink]="['/navigation/scanner']">Escanear QR</a>
         </div>
     </div>
 </ion-content>
