@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CapacitorSQLite, SQLiteDBConnection, SQLiteConnection, CapacitorSQLitePlugin } from '@capacitor-community/sqlite';
-import { tableSchema, insertUserQ, selectAllQ, selectByMailQ, 
+import { tableSchema, insertUserQ, deleteUserQ, selectAllQ, selectByMailQ, 
   selectAuthQ, insertSessionQ, selectSessionQ, deleteSessionQ } from '../files/db-utils';
 @Injectable({
   providedIn: 'root'
@@ -41,11 +41,14 @@ export class DatabaseHandlerService {
     this.db.query(insertUserQ, [mail, password, username, question, answer]);
   }
 
+  async deleteUser(mail: string) {
+    return await this.db.query(deleteUserQ, [mail]);
+  }
+
   async selectUsers(): Promise<any> {
     try {
-      return (
-        await this.db.query(selectAllQ)
-      );
+      const { values } = await this.db.query(selectAllQ);
+      return values;        
     }catch(err) {
       return JSON.stringify(err);
     }

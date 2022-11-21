@@ -1,0 +1,65 @@
+
+.card {
+    position: relative;
+    padding: 1em;
+    box-shadow: 0px 3px 25px -20px rgba(0,0,0,0.75);
+    background-color: var(--white-primary);
+    border-radius: 2%;
+    margin-top: 1em;
+}
+
+.btn {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: #FF8008;  
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008); 
+    background: linear-gradient(to right, #FFC837, #FF8008); 
+}
+
+.btn:hover {
+    opacity: .7;
+    transition: .3s;
+}
+
+.btn__icon {
+    width: 23px;
+    height: 23px;
+    color: var(--white-primary);
+}
+
+.card__header, .card__body {
+    width: 100%;
+}
+
+.card__user {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card__mail {
+    font-style: italic;
+}
+
+.card__body {
+    margin-top: .6em;
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+
+.body__content {
+    margin-top: .6em;
+}
+
+.body__group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card__paragraph {
+    font-weight: 600;
+}

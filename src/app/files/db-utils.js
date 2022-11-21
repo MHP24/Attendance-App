@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS session (
   password TEXT NOT NULL
 );
 `;
-export const insertUserQ = 'INSERT INTO users VALUES(?, ?, ?, ?, ?)';
+export const insertUserQ = 'INSERT INTO users VALUES(?, ?, ?, ?, ?);';
+export const deleteUserQ = 'DELETE FROM users WHERE mail = ?;';
 export const selectAllQ = `SELECT * FROM users;`;
 export const selectByMailQ = `SELECT * FROM users WHERE mail = ?;`;
 export const selectAuthQ = `SELECT * FROM users WHERE mail = ? AND password = ?;`;

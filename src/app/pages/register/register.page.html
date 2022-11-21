@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <img class="main__img" src="../../../assets/img/register-img.svg" alt="balloons">
+
+    <form [formGroup]="registerForm" class="form" (ngSubmit)="onSubmit()">
+      <div class="form__group">
+          <input type="email" id="email" name="email" 
+          class="input__form" placeholder="Ingresa tu email" 
+          formControlName="email" autocomplete="off">
+          <small class="form__invalid" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
+          <small class="form__invalid" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
+      </div>
+
+      <div class="form__group">
+        <input type="text" id="username" name="username" 
+        class="input__form" placeholder="Ingresa tu nombre" 
+        formControlName="username" autocomplete="off">
+        <small class="form__invalid" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+
+      <div class="form__group">
+        <input type="text" id="question" name="question" 
+        class="input__form" placeholder="Ingresa tu pregunta secreta" 
+        formControlName="question" autocomplete="off">
+        <small class="form__invalid" *ngIf="registerForm.get('question')?.touched && registerForm.get('question')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+
+      <div class="form__group">
+        <input type="text" id="answer" name="answer" 
+        class="input__form" placeholder="Ingresa tu respuesta a la pregunta" 
+        formControlName="answer" autocomplete="off">
+        <small class="form__invalid" *ngIf="registerForm.get('answer')?.touched && registerForm.get('answer')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+  
+      <div class="form__group">
+          <input type="password" id="password" name="password" class="input__form" placeholder="Ingresa tu contraseña" formControlName="password">
+          <small class="form__invalid" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required'] ">Este campo es obligatorio.</small>
+      </div>
+
+      <a [routerLink]="'/login'" class="help-link">¿Ya tienes una cuenta? Inicia Sesi&oacute;n</a>
+      <app-button [buttonLabel]="'Registrarse'"></app-button>
+
+  </form>
+  </div>
+</ion-content>

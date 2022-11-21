@@ -95,16 +95,18 @@
     color: var(--placeholder-primary);
 }
 
-.forgot-password {
+.help-link {
     text-align: end;
     text-decoration: none;
     color: var(--link-primary);
     font-style: italic;
-    margin-top: .6em;
-    width: 200px;
+    // margin-top: .6em;
+    margin: .6em 0 0 .3em;
+    width: fit-content;
+    text-align: left;
 }
 
-.forgot-password:hover {
+.help-link:hover {
     opacity: .8;
 }
 

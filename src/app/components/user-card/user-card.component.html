@@ -1,0 +1,33 @@
+<div class="card" *ngFor="let u of dbUsers;">
+  <div class="card__header">
+    <p class="card__user">{{u.username}}</p>
+    <p class="card__mail">{{u.mail}}</p>
+  </div>
+
+  <div class="card__body">
+    <div class="body__content">
+      <div class="body__group">
+        <p class="card__paragraph">Pregunta secreta</p>
+        <p class="card__paragraph--content">{{u.question}}</p>
+      </div>
+
+      <div class="body__content">
+        <div class="body__group">
+          <p class="card__paragraph">Respuesta secreta</p>
+          <p class="card__paragraph--content">{{u.answer}}</p>
+        </div>
+
+        <div class="body__content">
+          <div class="body__group">
+            <p class="card__paragraph">Contrase&nacute;a</p>
+            <p class="card__paragraph--content">{{u.password}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <button class="btn" (click)="onClick(u.mail)">
+    <ion-icon class="btn__icon" name="close-outline"></ion-icon>
+  </button>
+</div>

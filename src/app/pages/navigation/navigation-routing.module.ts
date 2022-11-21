@@ -32,7 +32,12 @@ const routes: Routes = [
         path: 'forum',
         loadChildren: () => import('../../pages/forum/forum.module').then( m => m.ForumPageModule),
         canActivate: [RouteGuardService]
-      }
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('../../pages/users/users.module').then( m => m.UsersPageModule),
+        // canActivate: [RouteGuardService]
+      },
     ]
   }
 ];
