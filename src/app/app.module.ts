@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule  } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatabaseHandlerService } from './services/database-handler.service';
-import { IonicStorageModule } from '@ionic/storage-angular';
+import { IonicStorageModule, Storage } from '@ionic/storage-angular';
 import { AuthService } from './services/auth.service';
 import { StorageHandlerService } from './services/storage-handler.service';
 import { RouteGuardService } from './services/route-guard.service';
@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     DatabaseHandlerService,
     AuthService,
     StorageHandlerService,
+    Storage,
     RouteGuardService,
     ApiService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
