@@ -18,17 +18,17 @@
             <input type="email" id="email" name="email" 
             class="input__form" placeholder="Ingresa tu email" 
             formControlName="email" autocomplete="off">
-            <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
-            <small class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
+            <small id="invalid1" class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required'] ">Este campo es obligatorio.</small>
+            <small id="invalid2" class="form__invalid" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email'] ">Formato de email inv&aacute;lido.</small>
         </div>
 
         <div class="form__group">
             <input type="password" id="password" name="password" class="input__form" placeholder="Ingresa tu contraseña" formControlName="password">
-            <small class="form__invalid" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required'] ">Este campo es obligatorio.</small>
+            <small id="invalid3" class="form__invalid" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required'] ">Este campo es obligatorio.</small>
         </div>
-        <a [routerLink]="'/recover'" class="help-link">¿Olvidaste tu contraseña?</a>
-        <a [routerLink]="'/register'" class="help-link">¿No tienes una cuenta? ¡Registrate!</a>
-        <app-button [buttonLabel]="'Iniciar Sesión'"></app-button>
+        <a [routerLink]="'/recover'" id="recover" class="help-link">¿Olvidaste tu contraseña?</a>
+        <a [routerLink]="'/register'" id="register" class="help-link">¿No tienes una cuenta? ¡Registrate!</a>
+        <app-button [buttonLabel]="'Iniciar Sesión'" id="login"></app-button>
     </form>
 
     <div class="social-container">
