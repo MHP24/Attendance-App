@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
 import { DatabaseHandlerService } from '../services/database-handler.service';
-describe('IssTrackingDataService', () => {
+describe('Database Service', () => {
   let databaseService: DatabaseHandlerService;
   beforeEach(() => {
     TestBed.configureTestingModule({

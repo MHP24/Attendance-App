@@ -1,6 +1,6 @@
 import { getUser, findEmail } from '../helpers/userHandler';
 
-describe('IssTrackingDataService', () => {
+describe('User Handler E1', () => {
     const expectedUser = {
         mail: 'atorres@duocuc.cl', 
         password: '1234', 

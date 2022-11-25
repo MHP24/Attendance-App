@@ -23,9 +23,9 @@ export class DatabaseHandlerService {
             this.db = await this.createConnection();
             this.db.open();
             await this.db.execute(tableSchema);
-            this.createUser('atorres@duocuc.cl', '1234', 'Ana Torres Leiva', 'Nombre de tu mascota', 'Gato');
-            this.createUser('avalenzuela@duocuc.cl', 'qwer', 'Alberto Valenzuela Nuñez', 'Nombre de tu mejor amigo', 'Juanito');
-            this.createUser('cifuentes@duocuc.cl', 'asdf', 'Carla Fuentes González', 'Lugar de nacimiento de tu madre', 'Valparaiso');
+            // this.createUser('atorres@duocuc.cl', '1234', 'Ana Torres Leiva', 'Nombre de tu mascota', 'Gato');
+            // this.createUser('avalenzuela@duocuc.cl', 'qwer', 'Alberto Valenzuela Nuñez', 'Nombre de tu mejor amigo', 'Juanito');
+            // this.createUser('cifuentes@duocuc.cl', 'asdf', 'Carla Fuentes González', 'Lugar de nacimiento de tu madre', 'Valparaiso');
             resolve(true);
           } catch(err) {
             resolve(false);

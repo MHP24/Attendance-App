@@ -15,7 +15,7 @@ export class AppComponent {
     private storeService: StorageHandlerService,
     private authService: AuthService
   ) {
-    // this.initializeApp();
+    this.initializeApp();
   }
 
   initializeApp() {
