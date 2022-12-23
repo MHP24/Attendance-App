@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'cl.duoc.attendance',
-  appName: 'DuocAttendance',
+  appId: 'cl.attendance.app',
+  appName: 'AttendanceApp',
   webDir: 'www',
   bundledWebRuntime: false
 };

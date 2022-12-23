@@ -34,7 +34,7 @@ describe('Login page', () => {
 
   it('Should verify correct inputs', () => {
     cy.visit('http://localhost:8100/login').then(() => {
-      cy.get('#email').type('atorres@duocuc.cl');
+      cy.get('#email').type('atorres@mail.com');
       cy.get('#password').type('1234');
       cy.get('#invalid1').should('not.exist');
       cy.get('#invalid2').should('not.exist');
